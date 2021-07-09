@@ -41,3 +41,30 @@
 *.javac
 .gwt/
 target/
+
+
+# Python cache file
+__pycache__/
+
+# SQLite file, if not used
+db.sqlite3
+
+# Environment files and directories
+env/
+.env
+
+node_modules/
+missions/migrations/**
+
+# Django secret settings
+local.py
+
+# Translations
+*.mo
+*.po
+
+# Unit test / coverage reports
+.coverage
+
+# Media files
+media/**

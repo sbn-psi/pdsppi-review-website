@@ -1,0 +1,392 @@
+/* general styles for the whole site */
+.center {
+  margin: auto;
+  width: 50%;
+  border: 0px ;
+  padding: 0px;
+  text-align: center;
+}
+
+.center-main {
+  margin: auto;  
+  text-align: center;
+}
+
+a {
+  color: mediumblue;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: black;
+}
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+/* to make space for the footer on the bottom of the page */
+html {
+  height: 100%;
+}
+body {
+  padding-top: 40px;
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 180px;
+}
+/* for the images and text inside streamfields */
+.block-paragraph p {
+  color: black;
+}
+.block-code {
+  font-size: 14px;
+}
+.block-image-right {
+  float: right;
+  margin-left: 20px;
+  font: italic 12px Georgia, serif;
+}
+.block-image-left {
+  float: left;
+  margin-right: 20px;
+  font: italic 12px Georgia, serif;
+}
+.block-image-center {
+  display: grid;
+  /* justify-content works here because Wagtail creates an image of fixed dimensions */
+  justify-content: center;
+  overflow: hidden;
+  font: italic 12px Georgia, serif;
+}
+/* for the videos inside streamfields */
+.block-video-right {
+  float: right;
+  margin-left: 20px;
+  font: italic 12px Georgia, serif;
+}
+.block-video-left {
+  float: left;
+  margin-right: 20px;
+  font: italic 12px Georgia, serif;
+}
+.block-video-center {
+  display: grid;
+  /* margin auto works here because embed adapts to size of container */
+  margin: auto;
+  overflow: hidden;
+  font: italic 12px Georgia, serif;
+}
+.block-video-small {
+  width: 240px;
+  height: auto;
+}
+.block-video-medium {
+  width: 480px;
+  height: auto;
+  max-width: 100%;
+}
+.block-video-large {
+  width: 2400px;
+  height: auto;
+  max-width: 100%;
+}
+/* to make embedded objects responsive https://docs.wagtail.io/en/v2.9/topics/writing_templates.html#responsive-embeds */
+.rich-text img {
+  max-width: 100%;
+  height: auto;
+}
+.responsive-object {
+  position: relative;
+}
+.responsive-object iframe,
+.responsive-object object,
+.responsive-object embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+/* for the images with text overlay on cms pages */
+.card-img-overlay .card-title,
+.card-subtitle,
+.card-text {
+  color: white;
+}
+p.card-subtitle {
+  color: white;
+}
+.card.article,
+.card.theme {
+  border: none;
+}
+.article,
+.theme {
+  width: 320px;
+  height: 70px;
+}
+.img-front {
+  position: relative;
+  max-width: 100%;
+}
+.img-default {
+  position: relative;
+  max-width: 100%;
+  background-color: grey;
+}
+.img-background {
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+  left: 0;
+  background-color: navy;
+  opacity: 0;
+  transition: opacity 300ms;
+}
+a:hover .img-background {
+  opacity: 0.6;
+}
+/* to adjust inline code to Wagtailcodeblock default styling */
+code {
+  background-color: #f3f0ee;
+  padding: 2px;
+}
+/* for the navigation menu */
+a.menuitem {
+  color: navy;
+  font-size: large;
+  font-weight: bold;
+}
+.dropdown-menu {
+  min-width: 60px;
+}
+/* slightly enlarge the image on hover */
+a.menuitem .image-menu {
+  transition: transform 300ms;
+}
+a.menuitem:hover .image-menu {
+  transform: scale(1.1);
+}
+a.menuicon:hover {
+  text-decoration: none;
+}
+/* for the logo */
+.navbar .navbar-brand {
+  color: white;
+}
+/* for the footer; see also settings for html and body */
+footer {
+  height: 150px;
+  padding-top: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+footer ul {
+  list-style-type: none;
+}
+footer li span,
+footer li a,
+footer li a:hover {
+  display: inline;
+  color: white;
+  font-size: 12px;
+  margin-right: 40px;
+}
+/* for the comment section on article pages */
+.form-control.input-field-comment {
+  width: 800px;
+  max-width: 100%;
+  height: 80px;
+}
+.comment-form {
+  width: 800px;
+  max-width: 100%;
+  margin-left: 0;
+}
+.xtdcomment {
+  border: 1px solid lightgrey;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.media-list {
+  width: 800px;
+  max-width: 100%;
+  margin-left: 0;
+}
+/* for thumbnail image in comments */
+.profile-image-thumbnail {
+  float: left;
+  width: 64px;
+  height: 64px;
+  max-width: 100%;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+main > .container {
+  padding: 60px 15px 0;
+}
+
+.footer {
+  background-color: #f5f5f5;
+}
+
+h4::before {
+  display: block;
+  content: " ";
+  margin-top: -70px;
+  height: 70px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width: 767px) {
+  .footer > .container {
+    max-width: 100%;
+  }
+  .footer {
+    padding: 0, 0, 0, 0;
+    margin: 0, 0, 0, 0;
+  }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 768px) {
+  .footer > .container {
+    max-width: 100%;
+  }
+  .footer {
+    padding-left: 10%;
+  }
+}
+
+.footer > .container {
+  max-width: 100%;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  /* height: 60px; */
+  /* line-height: 60px; Vertically center the text there */
+  background-color: #f5f5f5;
+  font-size: 70%;
+  text-align: center;
+}
+
+.footer-main {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  /* height: 60px; */
+  /* line-height: 60px; Vertically center the text there */
+  background-color: #f5f5f5;
+  font-size: 70%;
+  text-align: center;
+
+}
+
+code {
+  font-size: 80%;
+}
+
+hr.class-1 {
+  border-top: 2px solid #8c8b8b;
+}
+
+hr.class-2 {
+  border-top: 3px double #8c8b8b;
+}
+
+hr.class-3 {
+  border-top: 1px dashed #8c8b8b;
+}
+
+hr.class-4 {
+  border-top: 1px dotted #8c8b8b;
+}
+
+hr.class-5 {
+  background-color: #fff;
+  border-top: 2px dashed #8c8b8b;
+}
+
+hr.class-6 {
+  background-color: #fff;
+  border-top: 5px dotted #8c8b8b;
+}
+
+/*
+   * Sidebar
+   */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 48px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #999;
+}
+
+.sidebar .nav-link.active {
+  color: #007bff;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}

@@ -1,14 +1,10 @@
-# NASA PDS New Project Template
+# PDS-PPI Review Website
 
-My new awesome project
-
-## Installation
-
-_Installation instructions here_
+This project uses Wagtail/Django, and is built using Python v3.8
 
 ## Usage
 
-_Basic usage instructions here_
+_Basic usage instructions coming_
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

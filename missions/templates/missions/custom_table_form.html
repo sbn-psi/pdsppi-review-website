@@ -1,0 +1,5 @@
+{% load i18n %}
+
+<div id="{{ widget.attrs.id }}-handsontable-container"></div>
+{% include 'django/forms/widgets/hidden.html' %}
+<script>initTable("{{ widget.attrs.id|escapejs }}", {{ widget.table_options_json|safe }});</script>

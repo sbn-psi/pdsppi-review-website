@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags static i18n %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+    <div class="container-fluid mt-4 center">
+        <div class="page-title">
+            <h1>{{ page.section_title }}</h1>
+        </div>
+        <div class="page-intro">
+            {{ page.intro|richtext }}
+        </div>
+    </div>
+
+    <div id="carouselFull" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {% for item in page.theme_section.get_children %}
+                <li data-target="#carouselFull" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+            {% endfor %}
+        </ol>
+        <div class="carousel-inner">
+            {% for item in page.theme_section.get_children %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <a href="{% pageurl item %}">
+                        {% image item.specific.image fill-2000x360 class="img-fluid" %}
+                    </a>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5><a href="{% pageurl item %}" class="carousel-caption">{{ item.title }}</a></h5>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <a class="carousel-control-prev" href="#carouselFull" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">{%  trans Previous %}</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselFull" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">{%  trans Next %}</span>
+        </a>
+    </div>
+
+    {% if page.theme_section %}
+        <div class="container-fluid mt-4">
+            <div class="page-title">
+                <h1>{{ page.theme_section_title }}</h1>
+            </div>
+            <div class="page-intro">
+                {{ page.theme_section_intro|richtext }}
+            </div>
+        </div>
+        <div class="container-fluid mt-4">
+            <div class="row">
+                {% for childpage in page.theme_section.get_children %}
+                    <div class="col-auto mb-3">
+                        <div class="card theme">
+                            <a href="{{ childpage.url }}">
+                                {% if childpage.specific.image %}
+                                    {% image childpage.specific.image fill-320x70 class="img-front rounded-circle" %}
+                                {% else %}
+                                    <img alt="" src="{% static 'images/transparent.png' %}" width="320" height="70" class="img-default rounded-circle">
+                                {% endif %}
+                                <img alt="" src="{% static 'images/transparent.png' %}" width="320" height="70" class="img-background rounded-circle">
+                                <div class="card-img-overlay">
+                                    <br><h5 class="card-title text-center">{{ childpage.title }}</h5>
+                                    <p class="card-subtitle text-center">{{ childpage.specific.intro|striptags|safe|truncatewords:15 }}</p>
+                               </div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if page.mission_section %}
+        <div class="container-fluid mt-4 center">
+            <div class="intro">
+                <h1>{{ page.mission_section_title }}</h1>
+            </div>
+            <div class="intro">
+                {{ page.mission_review_intro|richtext }}
+            </div>
+        </div>
+        <div class="container-fluid mt-4 center">
+            <div class="row">
+                {% for childpage in page.mission_section.specific.featured_missionpages %}
+                    <div class="col-auto mb-3 center-main">
+                        <div class="card article">
+                            <a href="{{ childpage.url }}">
+                                {% if childpage.specific.image %}
+                                    {% image childpage.specific.image fill-320x70 class="img-front rounded" %}
+                                {% else %}
+                                    <img alt="" src="{% static 'images/transparent.png' %}" width="320" height="70" class="img-default rounded">
+                                {% endif %}
+                                <img alt="" src="{% static 'images/transparent.png' %}" width="320" height="70" class="img-background rounded">
+                                <div class="card-img-overlay">
+                                    <h5 class="card-title">{{ childpage.title }}</h5>
+                                    <p class="card-subtitle">{{ childpage.specific.intro|striptags|safe|truncatewords:15 }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container center">
+            <p><a href="{{ page.mission_section.url }}">{% trans "View more" %}</a></p>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block footer %}
+<footer class="footer-main mt-auto py-3">
+    <div class="container">
+        <span class="text-muted">Copyright 2020. All rights reserved.
+            <br><br>
+            Any data product or information at this site is for review purposes only.<br>
+            These data may include preliminary calibrations and/or simulated data.<br>
+            They are not to be redistributed nor used for scientific research.
+            <br><br>
+            Site Contact: <a href="hhuffman@igpp.ucla.edu">hhuffman@igpp.ucla.edu</a></span>
+    </div>
+</footer>
+{% endblock %}

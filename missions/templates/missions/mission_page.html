@@ -1,0 +1,233 @@
+{% extends "reviews.html" %}
+{% load wagtailcore_tags wagtailimages_tags widget_tweaks comments comments_xtd static %}
+
+{% block body_class %}template-missionpage{% endblock %}
+
+{% block header %}
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'pdsppi-logo.png' %}" width="30" class="d-inline-block align-top" alt="">
+            PDS-PPI Review
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Mission</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown03">
+                        {% if missionpages %}
+                        {% for post in missionpages %}
+                        {% with post=post.specific %}
+                        <a class="dropdown-item" href="{% pageurl post %}">{{post.title}}</a>
+                        {% endwith %}
+                        {% endfor %}
+                        {% else %}
+                        <a class="dropdown-item" href="#">No missions are available.</a>
+                        {% endif %}
+                    </div>
+                </li>
+                </li>
+                {% for subpage in self.get_children %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{subpage.slug}}">{{subpage.title}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+</header>
+{% endblock %}
+
+
+<div class="container-fluid">
+    <div class="row">
+        {% block content %}
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <span data-feather="home"></span>
+                            Review Information <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    {% if page.siteLayout %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#review-site-layout">
+                            <span data-feather="file"></span>
+                            Review Site Layout
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    {% if page.reviewers.all %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#review-panel">
+                            Review Panel
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    {% if page.scheduling %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#schedules">
+                            Schedules
+                        </a>
+                        {% for block in page.scheduling %}
+                        <ul class="nav-item">
+                            <a class="nav-link" href="#{{block.value.schedule_name|slugify}}">
+                                {{block.value.schedule_name}}
+                            </a>
+                        </ul>
+                        {% endfor %}
+                    </li>
+
+                    {% endif %}
+
+                    {% if page.instructions %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#instructions">
+                            Instructions
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div
+                class="justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 style="text-align: center;">
+                    {{page.title}} Peer Review
+                </h1>
+                <hr class="class-1" />
+
+                {% if page.site_layout %}
+                {% block site_layout %}
+                <div>
+                    <h4 id="review-site-layout">
+                        Review Site Layout
+                    </h4>
+                    {{ page.site_layout|richtext }}
+                </div>
+                {% endblock %}
+                <hr class="class-1" />
+                {% endif %}
+
+                {% if page.reviewers.all %}
+                {% block reviewPanel %}
+                <div id="review-panel">
+                    <h4>Review Panel</h4>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Reviewer</th>
+                                    <th>Affiliation</th>
+                                    <th>Role</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% with reviewers=page.reviewers.all %}
+                                {% for reviewer in reviewers %}
+                                <tr>
+                                    <td>{{reviewer.name}}</td>
+                                    <td>{{reviewer.affiliation}}</td>
+                                    <td>{{reviewer.role}}</td>
+                                    <td>{{reviewer.email}}</td>
+                                </tr>
+                                {% endfor %}
+                                {% endwith %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {% endblock %}
+                <hr class="class-1" />
+                {% endif %}
+
+                {% if page.scheduling %}
+                {% block schedule %}
+                {% for block in page.scheduling %}
+                <div id="schedules">
+                    <div id="{{block.value.schedule_name|slugify}}">
+                        <h4>{{block.value.schedule_name}}</h4>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-sm">
+                                {{ block.value.print_schedule }}
+                            </table>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endblock %}
+                <hr class="class-1" />
+                {% endif %}
+
+                {% if page.instructions %}
+                {% block instructions %}
+                <div id="instructions">
+                    <h4 id="all-reviewers">Instructions</h4>
+                    {% for block in page.instructions %}
+
+                    <div class='h5'>
+                        {% if block.value.reviewers == "all" %}
+                        All Reviewers
+                        {% elif block.value.reviewers == "science" %}
+                        Science Reviewers
+                        {% elif block.value.reviewers == "standards" %}
+                        Standards Reviewers
+                        {% elif block.value.reviewers == "data" %}
+                        Data Providers
+                        {% endif %}
+                    </div>
+                    <hr>
+                    <div>
+                        {{block.value.instructions}}
+                    </div>
+
+                    {% endfor %}
+                </div>
+                {% endblock %}
+                {% endif %}
+            </div>
+
+            <!-- <p class="meta">Last updated: {{page.date}}</p>
+            {% with categories=page.categories.all %}
+            {% if categories %}
+            <h3>Categories</h3>
+            <ul>
+                |
+                {% for category in categories %}
+                <li style="display: inline">
+                    {% image category.icon fill-32x32 style="vertical-align: middle" %}
+                    {{ category.name }} |
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %} -->
+<!-- 
+            {% if page.tags.all.count %}
+            <div class="tags">
+                <h3>Tags</h3>
+                {% for tag in page.tags.all %}
+                <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
+                {% endfor %}
+            </div>
+            {% endif %} -->
+            <div>
+                <p><a href="{{page.get_parent.url}}">Return to all missions index</a></p>
+            </div>
+        </main>
+        {% endblock %}
+    </div>
+</div>

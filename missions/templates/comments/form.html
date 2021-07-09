@@ -1,0 +1,32 @@
+{% load i18n %}
+{% load comments %}
+
+<form method="POST" action="{% comment_form_target %}" class="needs-validation" novalidate>
+    {% csrf_token %}
+
+    <fieldset>
+        <input type="hidden" name="next" value="{% url 'comments-xtd-sent' %}"/>
+    
+        <div class="alert alert-danger" data-comment-element="errors" hidden>
+        </div>
+
+        {% for field in form %}
+            {% if field.is_hidden %}<div>{{ field }}</div>{% endif %}
+        {% endfor %}
+
+        <div style="display:none">{{ form.honeypot }}</div>
+
+        <div class="row form-group {% if 'comment' in form.errors %}has-danger{% endif %}">
+            <div class="offset-md-1 col-md-10">
+                {{ form.comment }}
+            </div>
+        </div>    
+    </fieldset>
+
+    <div class="row form-group">
+        <div class="offset-md-3 col-md-7">
+            <input type="submit" name="post" value="{% trans 'send' %}" class="btn btn-primary" />
+            <input type="submit" name="preview" value="{% trans 'preview' %}" class="btn btn-secondary" />
+        </div>
+    </div>
+</form>

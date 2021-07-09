@@ -1,0 +1,88 @@
+<style>
+    #schedule {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        overflow-x: auto;
+    }
+
+    #schedule th {
+        border: 1px solid #ddd;
+        padding-left:8px;
+        text-align: left;
+        background-color: grey;
+        color: white;
+    }
+
+    #schedule td:nth-child(1) {
+        border: 1px solid #ddd;
+        padding: 8px;
+        min-width: 100px;
+        max-width: 100px;
+    }
+
+    #schedule td:nth-child(2) {
+        border: 1px solid #ddd;
+        padding: 8px;
+        min-width: 500px;
+        max-width: 800px;
+        /* width: 500px; */
+    }
+
+    #schedule tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #schedule tr:hover {
+        background-color: #ddd;
+    }
+</style>
+
+
+<table id="data">
+    {% if table_header %}
+    <thead>
+        <tr>
+            {% for column in table_header %}
+            <th>
+                {% if column.strip %}
+                {% if html_renderer %}
+                {{ column.strip|safe|linebreaksbr }}
+                {% else %}
+                {{ column.strip|linebreaksbr }}
+                {% endif %}
+                {% endif %}
+            </th>
+            {% endfor %}
+        </tr>
+    </thead>
+    {% endif %}
+    <tbody>
+        {% for row in data %}
+        <tr>
+            {% for column in row %}
+            {% if first_col_is_header and forloop.first %}
+            <th>
+                {% if column.strip %}
+                {% if html_renderer %}
+                {{ column.strip|safe|linebreaksbr }}
+                {% else %}
+                {{ column.strip|linebreaksbr }}
+                {% endif %}
+                {% endif %}
+            </th>
+            {% else %}
+            <td>
+                {% if column.strip %}
+                {% if html_renderer %}
+                {{ column.strip|safe|linebreaksbr }}
+                {% else %}
+                {{ column.strip|linebreaksbr }}
+                {% endif %}
+                {% endif %}
+            </td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,32 @@
+{% extends "reviews.html" %}
+{% load wagtailcore_tags wagtailimages_tags static i18n %}
+{% block body_class %}template-missionlienspage{% endblock %}
+
+<div class="container-fluid">
+    <div class="row">
+      {%block content%}
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a href="{{page.get_parent.url}}">
+                <span data-feather="home"></span>
+                Back to Mission Home <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div
+          class="justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+        >
+          <h1 style="text-align: center;">
+            {{page.get_parent.title}} Liens
+          </h1>
+          <hr class="class-1" />
+        </div>
+      </main>
+      {% endblock %}
+    </div>
+  </div>
