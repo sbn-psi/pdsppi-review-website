@@ -4,7 +4,7 @@ This project uses Wagtail/Django, and is built using Python v3.8.
 
 ## How To Run
 
-This web application was designed to run in a docker container (see Dockerfile for an example setup file). Before modifying this code, it is adviseable to review Wagtail's [getting started documentation](https://docs.wagtail.io/en/stable/getting_started/tutorial.html).
+This web application was designed to run in a docker container (see Dockerfile for an example setup file). Before modifying this code, it is advisable to review Wagtail's [getting started documentation](https://docs.wagtail.io/en/stable/getting_started/tutorial.html).
 
 You can run a local instance of the web application for testing by running the following commands as listed in the Wagtail documentation.
 
