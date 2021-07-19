@@ -24,24 +24,24 @@ _Basic usage instructions_
    1. In the Settings->Sites page, click on your site, and have it point to that new root page.
 2. Create a new mission index child page under your root page. This will serve as the current active reviews page.
 3. Under the current reviews page, you can now add new child pages for each review.
-   3. Each top level review page allows you to assign the panel of reviewers (once created), scheduling, if the review is active ("featured"), descriptions for the review, and instructions for the different groups of reviewers.
-   3. Modify the visibility of this review page to only logged in users that are part of the review group can access these pages.
+   1. Each top level review page allows you to assign the panel of reviewers (once created), scheduling, if the review is active ("featured"), descriptions for the review, and instructions for the different groups of reviewers.
+   1. Modify the visibility of this review page to only logged in users that are part of the review group can access these pages.
 4. Create individual data, comments, and lien pages under each peer review
-   4. For data pages, just click to add a new data section, and fill out the appropriate name, URL to the data, and description of the data.
-   4. No action should need to be taken for the comments page. This new page that was created will allow for logged in users to leave comments.
-   4. NOTE: Lien pages are currently being worked on. This README will be updated once changes are pushed.
+   1. For data pages, just click to add a new data section, and fill out the appropriate name, URL to the data, and description of the data.
+   2. No action should need to be taken for the comments page. This new page that was created will allow for logged in users to leave comments.
+   3. NOTE: Lien pages are currently being worked on. This README will be updated once changes are pushed.
  
 _Creating a users/groups/reviewers_
 1. Create a new user by going to Settings->Users
 2. Create a new group by going to Settings->Groups. No permissions modifications needs to happen here.
 3. Assign groups to users by viewing the User in Settings, and applying the group under **Roles**.
 4. Under Snippits->Affiliations, and Snippits->Roles, ensure that the appropriate information exists.
-   4. i.e., Under affiliations, something like "UCLA - PDS/PPI"
-   4. i.e., Under roles, "Data Reviewer", "Standards Reviewer", etc.
+   1. i.e., Under affiliations, something like "UCLA - PDS/PPI"
+   2. i.e., Under roles, "Data Reviewer", "Standards Reviewer", etc.
 5. Now under Snippits->Reviewer, create a new reviewer, and perform the following:
-   5. Give the reviewer a name (this is to help keep anonymity, if requested.)
-   5. Select the user account (UID)
-   5. Select the appropriate affiliation and role.
+   1. Give the reviewer a name (this is to help keep anonymity, if requested.)
+   2. Select the user account (UID)
+   3. Select the appropriate affiliation and role.
 6. You can now assign this new reviewer to the appropriate peer review, by editing the review page and choosing the reviewers that were set up.
 
 ## Current To-Do's
