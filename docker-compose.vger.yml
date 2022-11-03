@@ -4,7 +4,7 @@ services:
   web:
     container_name: web
     build: .
-    command: ./bin/start.vger.sh
+    command: ./start.vger.sh
     volumes:
       - ./app/:/usr/src/app/
     ports:

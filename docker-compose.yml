@@ -4,7 +4,7 @@ services:
   web:
     container_name: web
     build: .
-    command: ./bin/start.dev.sh
+    command: ./start.dev.sh
     volumes:
       - ./app/:/usr/src/app/
     ports:
