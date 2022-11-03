@@ -47,7 +47,7 @@ COPY --chown=wagtail:wagtail . .
 USER wagtail
 
 # Make scripts executable.
-RUN chmod +x ./bin/*
+RUN chmod +x ./*.sh
 
 # Postgres Entrypoint
 COPY entrypoint.sh /entrypoint.sh
