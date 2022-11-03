@@ -51,7 +51,7 @@ db.sqlite3
 
 # Environment files and directories
 env/
-.env
+.env*
 
 node_modules/
 missions/migrations/**
