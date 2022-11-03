@@ -7,7 +7,7 @@ DEBUG = os.environ.get("DEBUG")
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: define the correct hosts in production!
-ALLOWED_HOSTS = ['*'] 
+ALLOWED_HOSTS = ['vger.psi.edu:3434'] 
 
 DATABASES = {
     'default': {
