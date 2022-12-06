@@ -1,4 +1,4 @@
-# PDS-PPI Review Website
+# SBN-PSI Review Website
 
 This project uses Wagtail/Django, and is built using Python v3.8.
 
