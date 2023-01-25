@@ -166,7 +166,7 @@ MEDIA_URL = '/media/'
 # Wagtail settings
 WAGTAIL_SITE_NAME = "review"
 WAGTAIL_FRONTEND_LOGIN_TEMPLATE='missions/login.html'
-WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = 'pdsppi-review@igpp.ucla.edu'
+WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = 'ckingston@psi.edu'
 WAGTAILADMIN_NOTIFICATION_USE_HTML = True
 WAGTAIL_ENABLE_UPDATE_CHECK = True
 WAGTAIL_USER_CREATION_FORM = 'userauth.forms.WagtailUserCreationForm'
@@ -179,7 +179,7 @@ COMMENTS_APP = 'django_comments_xtd'
 COMMENTS_XTD_SALT = (b"Timendi causa est nescire. "
                      b"Aequam memento rebus in arduis servare mentem.")
 COMMENTS_XTD_FROM_EMAIL = "no-reply@igpp.ucla.edu"
-COMMENTS_XTD_CONTACT_EMAIL = "hhuffman@igpp.ucla.edu"
+COMMENTS_XTD_CONTACT_EMAIL = "ckingston@psi.edu"
 
 COMMENTS_XTD_MODEL = 'missions.models.CustomComment'
 COMMENTS_XTD_MAX_THREAD_LEVEL = 5
