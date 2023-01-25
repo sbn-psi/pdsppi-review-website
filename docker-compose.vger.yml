@@ -5,6 +5,7 @@ services:
     container_name: web
     build: .
     command: ./start.vger.sh
+    restart: always
     volumes:
       - ./app/:/usr/src/app/
     ports:
