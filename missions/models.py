@@ -48,7 +48,7 @@ class HomePage(Page):
             FieldPanel('section_title'),
             FieldPanel('mission_review_intro', classname='full'),
             PageChooserPanel('mission_section'),
-        ], heading=("Mission Index Section"), classname='collapsible'),
+        ], heading=("Review Index Section"), classname='collapsible'),
     ]
 
     def get_context(self, request):
@@ -114,7 +114,7 @@ class MissionIndexPage(Page):
     # Specifies that only these page objects can live under this index page
     parent_page_types = ['HomePage']
     subpage_types = ['MissionPage']
-    max_count = 1
+    max_count = 2
 
     def missionpages(self):
         return MissionPage.objects.child_of(self).live().order_by('-first_published_at')
