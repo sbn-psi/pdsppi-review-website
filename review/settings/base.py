@@ -184,7 +184,3 @@ COMMENTS_XTD_CONTACT_EMAIL = "ckingston@psi.edu"
 COMMENTS_XTD_MODEL = 'missions.models.CustomComment'
 COMMENTS_XTD_MAX_THREAD_LEVEL = 5
 COMMENTS_XTD_LIST_ORDER = ('-thread_id', 'order')
-
-# Base URL to use when referring to full URLs within the Wagtail admin backend -
-# e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
