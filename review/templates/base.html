@@ -441,7 +441,7 @@ hr.class-6 {
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">Mission</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown03">
@@ -452,10 +452,10 @@ hr.class-6 {
                             {% endwith %}
                             {% endfor %}
                             {% else %}
-                            <a class="dropdown-item" href="#">No missions are available.</a>
+                            <a class="dropdown-item" href="#">No missions are available</a>
                             {% endif %}
                         </div>
-                    </li>
+                    </li> -->
                     </li>
                 </ul>
             </div>
@@ -491,6 +491,7 @@ hr.class-6 {
     </script>
     <script src="https://cdn.jsdelivr.net/npm/handsontable-pro@6.2.2/dist/handsontable.full.min.js"></script>
     <script type="text/javascript" src="{% static 'js/review.js' %}"></script>
+    <script type="text/javascript" src="{% static 'table_block/js/table.js' %}"></script>
 
     {% block extra_js %}
     {# Override this in templates to add extra javascript #}
