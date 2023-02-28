@@ -49,6 +49,4 @@ USER wagtail
 # Make scripts executable.
 RUN chmod +x ./*.sh
 
-# Postgres Entrypoint
-COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+CMD ["gunicorn"  , "-b", "0.0.0.0:8000", "review.wsgi:application"]
