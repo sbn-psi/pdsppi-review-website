@@ -16,8 +16,8 @@ then
 fi
 
 python manage.py collectstatic --noinput --clear
-python manage.py makemigrations --settings=review.settings.dev
-python manage.py migrate --settings=review.settings.dev
+python manage.py makemigrations --settings=review.settings.dev ## replace with module for corresponding environment
+python manage.py migrate --settings=review.settings.dev ## replace with module for corresponding environment
 
 echo "PostgreSQL migrations completed"
 
