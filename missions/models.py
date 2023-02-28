@@ -46,7 +46,7 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         MultiFieldPanel([
             FieldPanel('section_title'),
-            FieldPanel('mission_review_intro', classname='full'),
+            FieldPanel('mission_review_intro', classname='full', heading="Review intro"),
             PageChooserPanel('mission_section'),
         ], heading=("Review Index Section"), classname='collapsible'),
     ]
