@@ -12,8 +12,14 @@ then
     echo "PostgreSQL started"
 fi
 
-python manage.py makemigrations --settings=review.settings.dev
-python manage.py migrate --settings=review.settings.dev
+if [ "$DEBUG" = 'True' ]
+then
+    python manage.py makemigrations --settings=review.settings.dev
+    python manage.py migrate --settings=review.settings.dev
+else
+    python manage.py makemigrations --settings=review.settings.production
+    python manage.py migrate --settings=review.settings.production
+fi
 
 echo "PostgreSQL migrations completed"
 
