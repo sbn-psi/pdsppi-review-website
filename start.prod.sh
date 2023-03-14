@@ -3,4 +3,4 @@
 # Collect static files.
 python manage.py collectstatic --noinput --clear
 # Start server.
-python manage.py runserver 0.0.0.0:8000 --settings=review.settings.production
+gunicorn -b 0.0.0.0:8000 --access-logfile /app/log.txt review.wsgi:application
