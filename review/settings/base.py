@@ -189,7 +189,6 @@ COMMENTS_XTD_LIST_ORDER = ('-thread_id', 'order')
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
 
-
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get("POSTGRES_ENGINE"),

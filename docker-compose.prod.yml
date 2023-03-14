@@ -4,13 +4,13 @@ services:
   web:
     container_name: web
     build: .
-    command: ./start.vger.sh
+    command: ./start.prod.sh
     volumes:
       - ./app/:/usr/src/app/
     ports:
       - "3434:8000"
     env_file:
-      - .env.vger
+      - .env.prod
     depends_on:
       - db
   db:
@@ -22,7 +22,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
-      - .env.vger.db
+      - .env.prod.db
 
 volumes:
   postgres_data:
