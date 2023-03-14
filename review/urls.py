@@ -24,14 +24,19 @@ urlpatterns = [
     # url(r'^accounts/', include('allauth.urls')), # Creates urls like yourwebsite.com/accounts/login/
 ]
 
+print("settings.DEBUG:")
+print(settings.DEBUG)
 
-if settings.DEBUG:
+if settings.DEBUG == 'True':
+    print('wagtail serves static files')
     from django.conf.urls.static import static
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
     # Serve static and media files from development server
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+else:
+    print('nginx serves static files')
 
 urlpatterns = urlpatterns + [
     # For anything not caught by a more specific rule above, hand over to
@@ -43,4 +48,3 @@ urlpatterns = urlpatterns + [
     # of your site, rather than the site root:
     #    path("pages/", include(wagtail_urls)),
 ]
-
