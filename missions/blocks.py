@@ -1,6 +1,6 @@
-from wagtail.core import blocks
-from wagtail.core.blocks import StructBlock, StructValue
-from wagtail.core.blocks.field_block import CharBlock
+from wagtail import blocks
+from wagtail.blocks import StructBlock, StructValue
+from wagtail.blocks.field_block import CharBlock
 from wagtail.images.blocks import ImageChooserBlock
 
 from .custom_table import TableBlock
@@ -108,6 +108,7 @@ class ScheduleValue(StructValue):
 
 class ScheduleBlock(StructBlock):
     schedule_name = CharBlock(required=True)
+    # Here is the culprit, I think
     schedule = TableBlock(table_options=schedule_table_options, blank=True)
 
     class Meta:

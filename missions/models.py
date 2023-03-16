@@ -7,11 +7,11 @@ from modelcluster.models import ClusterableModel
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel, MultiFieldPanel, PageChooserPanel
-from wagtail.core import blocks
-from wagtail.core.blocks import StructBlock, StructValue, BooleanBlock, FieldBlock, ChoiceBlock, CharBlock 
-from wagtail.core.models import Page, Orderable
-from wagtail.core.fields import RichTextField, StreamField
+from wagtail.admin.panels import FieldPanel, InlinePanel, StreamFieldPanel, MultiFieldPanel, PageChooserPanel
+from wagtail import blocks
+from wagtail.blocks import StructBlock, StructValue, BooleanBlock, FieldBlock, ChoiceBlock, CharBlock 
+from wagtail.models import Page, Orderable
+from wagtail.fields import RichTextField, StreamField
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 from wagtail.search import index

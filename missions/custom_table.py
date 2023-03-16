@@ -6,7 +6,7 @@ from django.utils import translation
 from django.utils.functional import cached_property
 
 from wagtail.admin.staticfiles import versioned_static
-from wagtail.core.blocks.field_block import FieldBlock
+from wagtail.blocks.field_block import FieldBlock
 
 DEFAULT_TABLE_OPTIONS = {
     'minSpareRows': 0,
