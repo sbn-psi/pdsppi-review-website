@@ -9,7 +9,7 @@ services:
     volumes:
       - ./app/:/usr/src/app/
     ports:
-      - "80:80"
+      - "3434:80"
     env_file:
       - .env.prod
     depends_on:
