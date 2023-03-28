@@ -3,13 +3,14 @@ version: "3.3"
 services:
   web:
     container_name: web
-    build: .
+    build:
+      dockerfile: Dockerfile
     command: ./bin/start.dev.sh
     restart: always
     volumes:
       - ./app/:/usr/src/app/
     ports:
-      - "3434:8000"
+      - "8000:8000"
     env_file:
       - .env.dev
     depends_on:
