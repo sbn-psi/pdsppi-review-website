@@ -1,9 +1,0 @@
-FROM nginx:stable-alpine
-
-COPY nginx.conf /etc/nginx
-
-WORKDIR /usr/local/web_proxy
-
-COPY bin/start.web_proxy.sh ./
-
-RUN chmod +x start.web_proxy.sh

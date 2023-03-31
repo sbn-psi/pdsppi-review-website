@@ -5,7 +5,7 @@ services:
     container_name: web
     build:
       dockerfile: Dockerfile.prod
-    command: ./bin/start.prod.sh
+    command: [ "./bin/start.gunicorn.sh" ]
     restart: always
     volumes:
       - ./app/:/usr/src/app/
@@ -18,11 +18,11 @@ services:
         aliases:
           - web
 
-  web_proxy:
-    container_name: web_proxy
+  nginx:
+    container_name: nginx
     build:
-      dockerfile: Dockerfile.web_proxy
-    command: ./start.web_proxy.sh
+      dockerfile: Dockerfile.nginx
+    command: [ "./start.nginx.sh" ]
     restart: always
     ports:
       - "80:80"
@@ -31,7 +31,7 @@ services:
     networks:
       main:
         aliases:
-          - web_proxy
+          - nginx
 
 networks:
   main:
