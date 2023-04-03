@@ -1,0 +1,21 @@
+version: "3.3"
+
+services:
+  gunicorn:
+    container_name: gunicorn
+    build:
+      dockerfile: Dockerfile.gunicorn
+    restart: always
+    volumes:
+      - ./app/:/usr/src/app/
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env.gunicorn
+    networks:
+      main:
+        aliases:
+          - gunicorn
+
+networks:
+  main:

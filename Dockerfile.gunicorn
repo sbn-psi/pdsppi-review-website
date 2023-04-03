@@ -4,6 +4,8 @@ FROM python:3.11-buster
 # Use /app folder as a directory where the source code is stored.
 WORKDIR /app
 
+EXPOSE 8000
+
 ENV PYTHONUNBUFFERED=1 \
     PORT=8000;
 
@@ -29,3 +31,7 @@ COPY . .
 
 # Make scripts executable.
 RUN chmod +x bin/*.sh
+
+ENTRYPOINT [ "/usr/local/bin/gunicorn" ]
+
+CMD [ "-b", "0.0.0.0:8000", "--access-logfile", "/app/log.txt", "review.wsgi:application" ]
