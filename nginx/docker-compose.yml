@@ -16,4 +16,4 @@ services:
       - .env
 
 networks:
-  main
+  main:
