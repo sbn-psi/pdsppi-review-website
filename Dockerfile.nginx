@@ -1,9 +1,0 @@
-FROM nginx:stable-alpine
-
-COPY nginx.conf /etc/nginx
-
-WORKDIR /usr/local/nginx
-
-COPY bin/start.nginx.sh ./
-
-RUN chmod +x start.nginx.sh

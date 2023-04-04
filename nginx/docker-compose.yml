@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  proxy:
+    container_name: proxy
+    build:
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "80:80"
+    networks:
+      main:
+        aliases:
+          - proxy
+    env_file:
+      - .env
+
+networks:
+  main
