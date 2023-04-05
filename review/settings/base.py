@@ -184,3 +184,5 @@ COMMENTS_XTD_CONTACT_EMAIL = "ckingston@psi.edu"
 COMMENTS_XTD_MODEL = 'missions.models.CustomComment'
 COMMENTS_XTD_MAX_THREAD_LEVEL = 5
 COMMENTS_XTD_LIST_ORDER = ('-thread_id', 'order')
+
+CSRF_TRUSTED_ORIGINS = ['https://review-service.u4m6gudpq07vk.us-west-2.cs.amazonlightsail.com']

@@ -9,8 +9,6 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: define the correct hosts in production!
 ALLOWED_HOSTS = ['localhost', 'review-service.u4m6gudpq07vk.us-west-2.cs.amazonlightsail.com'] 
 
-CSRF_TRUSTED_ORIGINS = ['https://review-service.u4m6gudpq07vk.us-west-2.cs.amazonlightsail.com']
-
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get("POSTGRES_ENGINE"),
