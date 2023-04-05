@@ -12,8 +12,6 @@ services:
       main:
         aliases:
           - proxy
-    env_file:
-      - .env
 
 networks:
   main:
