@@ -67,5 +67,3 @@ local.py
 
 # Media files
 media/**
-
-nginx/static

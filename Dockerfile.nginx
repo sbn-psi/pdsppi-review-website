@@ -4,8 +4,6 @@ WORKDIR /proxy_app
 
 COPY nginx/nginx.conf.template .
 
-COPY nginx/static /opt/app/static
-
 COPY bin/start.nginx.sh .
 
 RUN chmod +x start.nginx.sh
