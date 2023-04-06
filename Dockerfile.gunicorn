@@ -1,15 +1,13 @@
 # Use an official Python runtime based on Debian 10 "buster" as a parent image.
-FROM tiangolo/uwsgi-nginx:python3.11
+FROM python:3.11-buster
 
-# Port used by this container to serve HTTP.
-EXPOSE 80
+# Use /app folder as a directory where the source code is stored.
+WORKDIR /app
 
-# Set environment variables.
-# 1. Force Python stdout and stderr streams to be unbuffered.
-# 2. Set PORT variable that is used by nginx. This should match "EXPOSE"
-#    command.
+EXPOSE 8000
+
 ENV PYTHONUNBUFFERED=1 \
-    PORT=80
+    PORT=8000;
 
 # Install system packages required by Wagtail and Django.
 RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-recommends \
@@ -28,16 +26,12 @@ RUN pip install "gunicorn==20.1.0"
 COPY requirements.txt /
 RUN pip install -r /requirements.txt
 
-# Use /app folder as a directory where the source code is stored.
-WORKDIR /app
-
-# Configure nginx
-COPY nginx.conf /etc/nginx
-
 # Copy the source code of the project into the container.
 COPY . .
 
 # Make scripts executable.
 RUN chmod +x bin/*.sh
 
-ENTRYPOINT [ "bin/entrypoint.sh" ]
+ENTRYPOINT [ "/usr/local/bin/gunicorn" ]
+
+CMD [ "-b", "0.0.0.0:8000", "--access-logfile", "/app/log.txt", "review.wsgi:application" ]

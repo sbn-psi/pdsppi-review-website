@@ -7,7 +7,7 @@ DEBUG = os.environ.get("DEBUG")
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: define the correct hosts in production!
-ALLOWED_HOSTS = ['localhost', 'vger.psi.edu', 'vger.psi.edu:3434'] 
+ALLOWED_HOSTS = ['localhost', 'review-service.u4m6gudpq07vk.us-west-2.cs.amazonlightsail.com'] 
 
 DATABASES = {
     'default': {
@@ -24,7 +24,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://vger.psi.edu:3434'
+BASE_URL = 'https://review-service.u4m6gudpq07vk.us-west-2.cs.amazonlightsail.com'
 
 try:
     from .local import *
