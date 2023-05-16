@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+  gunicorn:
+    container_name: gunicorn
+    build:
+      dockerfile: Dockerfile.gunicorn
+    restart: always
+    volumes:
+      - ./app/:/usr/src/app/
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env.dev.db
+    depends_on:
+      - db
+    networks:
+      main:
+        aliases:
+          - gunicorn
+
+  proxy:
+    container_name: proxy
+    build:
+      dockerfile: Dockerfile.nginx.dev
+    restart: always
+    ports:
+      - "80:80"
+    networks:
+      main:
+        aliases:
+          - proxy
+    depends_on:
+      - gunicorn
+    environment:
+      - DJANGO_HOST=gunicorn
+      - DJANGO_PORT=8000
+
+  db:
+    container_name: db
+    image: postgres:12.2-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env.dev.db
+    networks:
+      main:
+        aliases:
+          - db
+
+networks:
+  main:
+
+volumes:
+  postgres_data:

@@ -191,6 +191,8 @@ CSRF_TRUSTED_ORIGINS = ['https://review-service.u4m6gudpq07vk.us-west-2.cs.amazo
 # AWS S3, Cloudflare CDN configuration
 # stores/serves static and media directories in AWS in production
 USE_S3 = os.getenv('DEBUG') == 'False'
+print(f'DEBUG: {os.getenv("DEBUG")}')
+print(f'USE_S3: {USE_S3}')
 
 if USE_S3:
     # Upload media files to S3
@@ -209,7 +211,7 @@ if USE_S3:
     # Allow `django-admin collectstatic` to automatically put your static files in your bucket
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3ManifestStaticStorage'
 else:
-    STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    try:
+        from .dev import *
+    except ImportError:
+        pass
