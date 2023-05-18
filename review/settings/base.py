@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django_comments_xtd',
     'django_comments',
     'storages',
+    'seed',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
