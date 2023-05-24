@@ -47,6 +47,17 @@ class TableInput(forms.HiddenInput):
         context['widget']['table_options_json'] = json.dumps(self.table_options)
         return context
 
+    @property
+    def media(self):
+        return forms.Media(
+            css={'all': [
+                versioned_static('table_block/css/vendor/handsontable-6.2.2.full.min.css')
+            ]},
+            js=[
+                versioned_static('table_block/js/vendor/handsontable-6.2.2.full.min.js'),
+                versioned_static('js/table.js')
+            ]
+        )
 
 class TableBlock(FieldBlock):
 
@@ -121,7 +132,7 @@ class TableBlock(FieldBlock):
             ]},
             js=[
                 versioned_static('table_block/js/vendor/handsontable-6.2.2.full.min.js'),
-                versioned_static('table_block/js/table.js')
+                versioned_static('js/table.js')
             ]
         )
 
