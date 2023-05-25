@@ -63,7 +63,7 @@ class HomePage(Page):
 # =====================================================================
 class MissionPage(Page):
     parent_page_types = ['MissionIndexPage']
-    subpage_types = ['MissionDataPage', 'MissionCommentsPage', 'MissionLiensPage']
+    subpage_types = ['MissionDataPage', 'MissionCommentsPage', 'MissionLiensPage', 'MissionMaterialsPage']
     image = models.ForeignKey(
         'wagtailimages.Image', blank=True, null=True, on_delete=models.SET_NULL, related_name='+', verbose_name=("Image")
     )
@@ -152,6 +152,30 @@ class MissionDataPage(Page):
         context['missionpages'] = missionpages
         return context
 
+# =====================================================================
+# Mission Materials Page Setup
+# =====================================================================
+class MissionMaterialsPage(Page):
+    parent_page_types = ['MissionPage']
+    subpage_types = []
+    materials = StreamField(
+        [('data', DataBlock())], blank=True)
+
+    content_panels = Page.content_panels + [
+        MultiFieldPanel([
+            StreamFieldPanel('materials'),
+        ],
+            heading="Review Materials",
+            classname="collapsible"
+        ),
+    ]
+
+    def get_context(self, request):
+        # Update context to include only published posts, ordered by reverse-chron
+        context = super().get_context(request)
+        missionpages = MissionPage.objects.all()
+        context['missionpages'] = missionpages
+        return context
 
 # =====================================================================
 # Mission Comments Page Setup
