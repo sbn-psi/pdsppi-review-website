@@ -44,6 +44,12 @@ class DataBlock(blocks.StructBlock):
     description = blocks.RichTextBlock(default="Description of data set", features=[
                                         'h6', 'bold', 'italic', 'hr', 'ol', 'ul', 'link', 'document-link', 'image', 'embed'])
 
+class MaterialsBlock(blocks.StructBlock):
+    name = blocks.TextBlock(default="Material Name")
+    link = blocks.RawHTMLBlock(form_classname='link')
+    description = blocks.RichTextBlock(default="Description", features=[
+                                        'h6', 'bold', 'italic', 'hr', 'ol', 'ul', 'link', 'document-link', 'image', 'embed'])
+
 # =====================================================================
 # Custom ScheduleBlock Setup (Implements TableBlock)
 # =====================================================================

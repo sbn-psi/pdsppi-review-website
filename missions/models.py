@@ -16,7 +16,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 from wagtail.search import index
 
-from .blocks import InlineImageBlock, ScheduleBlock, schedule_table_options, DataBlock, ReviewerChoiceBlock, InstructionBlock
+from .blocks import InlineImageBlock, ScheduleBlock, schedule_table_options, DataBlock, ReviewerChoiceBlock, InstructionBlock, MaterialsBlock
 
 from django_comments_xtd.models import XtdComment
 
@@ -159,7 +159,7 @@ class MissionMaterialsPage(Page):
     parent_page_types = ['MissionPage']
     subpage_types = []
     materials = StreamField(
-        [('data', DataBlock())], blank=True)
+        [('materials', MaterialsBlock())], blank=True)
 
     content_panels = Page.content_panels + [
         MultiFieldPanel([
