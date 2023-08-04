@@ -67,3 +67,13 @@ local.py
 
 # Media files
 media/**
+
+# macOS stuff
+.DS_Store
+
+# Visual Studio Code
+.vscode/
+
+# AWS Lightsail
+containers.json
+public-endpoint.json

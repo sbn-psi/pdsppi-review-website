@@ -1,0 +1,11 @@
+FROM nginx:stable-alpine
+
+WORKDIR /proxy_app
+
+COPY nginx/nginx.conf.dev.template ./nginx.conf.template
+
+COPY bin/start.nginx.sh .
+
+RUN chmod +x start.nginx.sh
+
+CMD [ "/proxy_app/start.nginx.sh" ]

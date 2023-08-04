@@ -1,6 +1,8 @@
 Django>=4.1,<4.2
-wagtail>=4.0,<=4.2
+wagtail==4.2
 psycopg2-binary
 django-allauth
 django-widget-tweaks
 django-comments-xtd
+django-storages
+boto3

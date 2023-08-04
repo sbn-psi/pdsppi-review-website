@@ -11,7 +11,9 @@ services:
     ports:
       - "8000:8000"
     env_file:
-      - .env.gunicorn
+      - .env.dev.db
+    depends_on:
+      - db
     networks:
       main:
         aliases:
@@ -20,7 +22,7 @@ services:
   proxy:
     container_name: proxy
     build:
-      dockerfile: Dockerfile.nginx
+      dockerfile: Dockerfile.nginx.dev
     restart: always
     ports:
       - "80:80"
@@ -34,5 +36,23 @@ services:
       - DJANGO_HOST=gunicorn
       - DJANGO_PORT=8000
 
+  db:
+    container_name: db
+    image: postgres:12.2-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env.dev.db
+    networks:
+      main:
+        aliases:
+          - db
+
 networks:
   main:
+
+volumes:
+  postgres_data:

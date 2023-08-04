@@ -1,6 +1,6 @@
-from wagtail.core import blocks
-from wagtail.core.blocks import StructBlock, StructValue
-from wagtail.core.blocks.field_block import CharBlock
+from wagtail import blocks
+from wagtail.blocks import StructBlock, StructValue
+from wagtail.blocks.field_block import CharBlock
 from wagtail.images.blocks import ImageChooserBlock
 
 from .custom_table import TableBlock
@@ -42,6 +42,12 @@ class DataBlock(blocks.StructBlock):
     name = blocks.TextBlock(default="Name of data set")
     link = blocks.RawHTMLBlock(form_classname='link')
     description = blocks.RichTextBlock(default="Description of data set", features=[
+                                        'h6', 'bold', 'italic', 'hr', 'ol', 'ul', 'link', 'document-link', 'image', 'embed'])
+
+class MaterialsBlock(blocks.StructBlock):
+    name = blocks.TextBlock(default="Material Name")
+    link = blocks.RawHTMLBlock(form_classname='link')
+    description = blocks.RichTextBlock(default="Description", features=[
                                         'h6', 'bold', 'italic', 'hr', 'ol', 'ul', 'link', 'document-link', 'image', 'embed'])
 
 # =====================================================================
@@ -108,6 +114,7 @@ class ScheduleValue(StructValue):
 
 class ScheduleBlock(StructBlock):
     schedule_name = CharBlock(required=True)
+    # Here is the culprit, I think
     schedule = TableBlock(table_options=schedule_table_options, blank=True)
 
     class Meta:
