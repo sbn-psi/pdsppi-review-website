@@ -4,14 +4,14 @@ services:
   web:
     container_name: web
     build: .
-    command: ./bin/start.dev.sh
+    command: ./bin/start.prod.sh
     restart: always
     volumes:
       - ./app/:/usr/src/app/
     ports:
-      - "3434:8000"
+      - "3434:80"
     env_file:
-      - .env.dev
+      - .env.prod
     depends_on:
       - db
   db:
@@ -23,7 +23,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
-      - .env.dev.db
+      - .env.prod.db
 
 volumes:
   postgres_data:

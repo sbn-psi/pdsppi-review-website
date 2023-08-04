@@ -101,14 +101,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'review.wsgi.application'
 
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 AUTH_USER_MODEL = 'userauth.CustomUser'
@@ -174,7 +166,7 @@ MEDIA_URL = '/media/'
 # Wagtail settings
 WAGTAIL_SITE_NAME = "review"
 WAGTAIL_FRONTEND_LOGIN_TEMPLATE='missions/login.html'
-WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = 'pdsppi-review@igpp.ucla.edu'
+WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = 'ckingston@psi.edu'
 WAGTAILADMIN_NOTIFICATION_USE_HTML = True
 WAGTAIL_ENABLE_UPDATE_CHECK = True
 WAGTAIL_USER_CREATION_FORM = 'userauth.forms.WagtailUserCreationForm'
@@ -187,12 +179,8 @@ COMMENTS_APP = 'django_comments_xtd'
 COMMENTS_XTD_SALT = (b"Timendi causa est nescire. "
                      b"Aequam memento rebus in arduis servare mentem.")
 COMMENTS_XTD_FROM_EMAIL = "no-reply@igpp.ucla.edu"
-COMMENTS_XTD_CONTACT_EMAIL = "hhuffman@igpp.ucla.edu"
+COMMENTS_XTD_CONTACT_EMAIL = "ckingston@psi.edu"
 
 COMMENTS_XTD_MODEL = 'missions.models.CustomComment'
 COMMENTS_XTD_MAX_THREAD_LEVEL = 5
 COMMENTS_XTD_LIST_ORDER = ('-thread_id', 'order')
-
-# Base URL to use when referring to full URLs within the Wagtail admin backend -
-# e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'

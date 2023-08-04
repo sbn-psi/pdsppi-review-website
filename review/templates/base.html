@@ -430,9 +430,9 @@ hr.class-6 {
     {% block header %}
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="/">
-                <img src="{% static 'pdsppi-logo.png' %}" width="30" class="d-inline-block align-top" alt="">
-                PDS-PPI Review
+            <a class="navbar-brand" href="/reviews">
+                <img src="{% static 'images/logo.png' %}" width="30" class="d-inline-block align-top" alt="Planetary Data System Logo">
+                SBN-PSI Review
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -441,7 +441,7 @@ hr.class-6 {
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">Mission</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown03">
@@ -452,10 +452,10 @@ hr.class-6 {
                             {% endwith %}
                             {% endfor %}
                             {% else %}
-                            <a class="dropdown-item" href="#">No missions are available.</a>
+                            <a class="dropdown-item" href="#">No missions are available</a>
                             {% endif %}
                         </div>
-                    </li>
+                    </li> -->
                     </li>
                 </ul>
             </div>
@@ -473,7 +473,7 @@ hr.class-6 {
                 These data may include preliminary calibrations and/or simulated data.<br>
                 They are not to be redistributed nor used for scientific research.
                 <br><br>
-                Site Contact: <a href="hhuffman@igpp.ucla.edu">hhuffman@igpp.ucla.edu</a></span>
+                Site Contact: <a href="ckingston@psi.edu">ckingston@psi.edu</a></span>
         </div>
     </footer>
     {% endblock %}
