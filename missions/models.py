@@ -7,16 +7,16 @@ from modelcluster.models import ClusterableModel
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel, MultiFieldPanel, PageChooserPanel
-from wagtail.core import blocks
-from wagtail.core.blocks import StructBlock, StructValue, BooleanBlock, FieldBlock, ChoiceBlock, CharBlock 
-from wagtail.core.models import Page, Orderable
-from wagtail.core.fields import RichTextField, StreamField
+from wagtail.admin.panels import FieldPanel, InlinePanel, StreamFieldPanel, MultiFieldPanel, PageChooserPanel
+from wagtail import blocks
+from wagtail.blocks import StructBlock, StructValue, BooleanBlock, FieldBlock, ChoiceBlock, CharBlock 
+from wagtail.models import Page, Orderable
+from wagtail.fields import RichTextField, StreamField
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 from wagtail.search import index
 
-from .blocks import InlineImageBlock, ScheduleBlock, schedule_table_options, DataBlock, ReviewerChoiceBlock, InstructionBlock
+from .blocks import InlineImageBlock, ScheduleBlock, schedule_table_options, DataBlock, ReviewerChoiceBlock, InstructionBlock, MaterialsBlock
 
 from django_comments_xtd.models import XtdComment
 
@@ -63,7 +63,7 @@ class HomePage(Page):
 # =====================================================================
 class MissionPage(Page):
     parent_page_types = ['MissionIndexPage']
-    subpage_types = ['MissionDataPage', 'MissionCommentsPage', 'MissionLiensPage']
+    subpage_types = ['MissionDataPage', 'MissionCommentsPage', 'MissionLiensPage', 'MissionMaterialsPage']
     image = models.ForeignKey(
         'wagtailimages.Image', blank=True, null=True, on_delete=models.SET_NULL, related_name='+', verbose_name=("Image")
     )
@@ -152,6 +152,30 @@ class MissionDataPage(Page):
         context['missionpages'] = missionpages
         return context
 
+# =====================================================================
+# Mission Materials Page Setup
+# =====================================================================
+class MissionMaterialsPage(Page):
+    parent_page_types = ['MissionPage']
+    subpage_types = []
+    materials = StreamField(
+        [('materials', MaterialsBlock())], blank=True)
+
+    content_panels = Page.content_panels + [
+        MultiFieldPanel([
+            StreamFieldPanel('materials'),
+        ],
+            heading="Review Materials",
+            classname="collapsible"
+        ),
+    ]
+
+    def get_context(self, request):
+        # Update context to include only published posts, ordered by reverse-chron
+        context = super().get_context(request)
+        missionpages = MissionPage.objects.all()
+        context['missionpages'] = missionpages
+        return context
 
 # =====================================================================
 # Mission Comments Page Setup

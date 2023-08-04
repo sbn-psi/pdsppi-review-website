@@ -6,7 +6,7 @@ from django.utils import translation
 from django.utils.functional import cached_property
 
 from wagtail.admin.staticfiles import versioned_static
-from wagtail.core.blocks.field_block import FieldBlock
+from wagtail.blocks.field_block import FieldBlock
 
 DEFAULT_TABLE_OPTIONS = {
     'minSpareRows': 0,
@@ -47,6 +47,17 @@ class TableInput(forms.HiddenInput):
         context['widget']['table_options_json'] = json.dumps(self.table_options)
         return context
 
+    @property
+    def media(self):
+        return forms.Media(
+            css={'all': [
+                versioned_static('table_block/css/vendor/handsontable-6.2.2.full.min.css')
+            ]},
+            js=[
+                versioned_static('table_block/js/vendor/handsontable-6.2.2.full.min.js'),
+                versioned_static('js/table.js')
+            ]
+        )
 
 class TableBlock(FieldBlock):
 
@@ -121,7 +132,7 @@ class TableBlock(FieldBlock):
             ]},
             js=[
                 versioned_static('table_block/js/vendor/handsontable-6.2.2.full.min.js'),
-                versioned_static('table_block/js/table.js')
+                versioned_static('js/table.js')
             ]
         )
 
