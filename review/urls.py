@@ -8,6 +8,7 @@ from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
+import os
 
 urlpatterns = [
     path('django-admin/', admin.site.urls),
@@ -26,10 +27,9 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/reviews/')),
 ]
 
-print("settings.DEBUG:")
-print(settings.DEBUG)
-
-if settings.DEBUG == 'True':
+if os.getenv("ENV") == 'production':
+    print('nginx serves static files')
+else:
     print('wagtail serves static files')
     from django.conf.urls.static import static
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -37,8 +37,6 @@ if settings.DEBUG == 'True':
     # Serve static and media files from development server
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-else:
-    print('nginx serves static files')
 
 urlpatterns = urlpatterns + [
     # For anything not caught by a more specific rule above, hand over to
