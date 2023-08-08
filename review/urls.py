@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.urls import include, path
 from django.contrib import admin
+from django.views.generic import RedirectView
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
@@ -22,6 +23,7 @@ urlpatterns = [
 
     path('reviews/', include('allauth.urls')), # Creates urls like yourwebsite.com/login/
     # url(r'^accounts/', include('allauth.urls')), # Creates urls like yourwebsite.com/accounts/login/
+    path('', RedirectView.as_view(url='/reviews/')),
 ]
 
 print("settings.DEBUG:")
