@@ -6,6 +6,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', 'sbnreviews.psi.edu'] 
 
+BASE_URL = 'https://sbnreviews.psi.edu'
+print('prod DEBUG: ', DEBUG)
+
 # AWS S3, Cloudflare CDN configuration
 # stores/serves static and media directories in AWS in production
 
@@ -24,8 +27,3 @@ AWS_LOCATION = 'static'
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
 # Allow `django-admin collectstatic` to automatically put your static files in your bucket
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3ManifestStaticStorage'
-
-# Base URL to use when referring to full URLs within the Wagtail admin backend -
-# e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'https://sbnreviews.psi.edu'
-print('prod DEBUG: ', DEBUG)
