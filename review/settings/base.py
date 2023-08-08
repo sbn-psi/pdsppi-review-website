@@ -191,7 +191,7 @@ CSRF_TRUSTED_ORIGINS = ['https://sbnreviews.psi.edu']
 
 # AWS S3, Cloudflare CDN configuration
 # stores/serves static and media directories in AWS in production
-USE_S3 = os.getenv('DEBUG') == 'False'
+USE_S3 = os.getenv('ENV') == 'production'
 print(f'DEBUG: {os.getenv("DEBUG")}')
 print(f'USE_S3: {USE_S3}')
 
