@@ -187,7 +187,7 @@ COMMENTS_XTD_MODEL = 'missions.models.CustomComment'
 COMMENTS_XTD_MAX_THREAD_LEVEL = 5
 COMMENTS_XTD_LIST_ORDER = ('-thread_id', 'order')
 
-CSRF_TRUSTED_ORIGINS = ['https://review-service.u4m6gudpq07vk.us-west-2.cs.amazonlightsail.com']
+CSRF_TRUSTED_ORIGINS = ['https://review-service.u4m6gudpq07vk.us-west-2.cs.amazonlightsail.com', 'https://sbnreviews.psi.edu']
 
 # AWS S3, Cloudflare CDN configuration
 # stores/serves static and media directories in AWS in production
@@ -203,8 +203,8 @@ if USE_S3:
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
     AWS_DEFAULT_ACL = 'public-read'
-    # Using S3 as a CDN (via CloudFront), tell storage to serve files from there
-    AWS_S3_CUSTOM_DOMAIN = 'd3qrohnnpazynl.cloudfront.net'
+    # Using AWS CloudFront CDN to access the S3 bucket that hosts static files
+    AWS_S3_CUSTOM_DOMAIN = 'sbnreviews.psi.edu'
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
     # s3 static settings
     AWS_LOCATION = 'static'
