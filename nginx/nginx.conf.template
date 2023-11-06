@@ -15,7 +15,7 @@ server {
     proxy_set_header X-Forwarded-Proto $scheme;
     proxy_set_header Host $http_host;
     proxy_redirect off;
-    proxy_pass https://d3qrohnnpazynl.cloudfront.net/static;
+    proxy_pass https://sbnreviews.psi.edu/static;
   }
 
   location @proxy_to_app {
