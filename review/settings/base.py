@@ -75,6 +75,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'review.urls'
