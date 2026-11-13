@@ -1,0 +1,41 @@
+# Application/tool dependencies: security fixes only; routine version PRs disabled.
+# Docker/Compose jobs are retained unchanged pending the image-security policy.
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: /
+  schedule:
+    interval: weekly
+  open-pull-requests-limit: 0
+  groups:
+    patch-and-minor:
+      patterns:
+      - '*'
+      update-types:
+      - patch
+      - minor
+      applies-to: security-updates
+- package-ecosystem: docker
+  directory: /
+  schedule:
+    interval: weekly
+  open-pull-requests-limit: 5
+  groups:
+    patch-and-minor:
+      patterns:
+      - '*'
+      update-types:
+      - patch
+      - minor
+- package-ecosystem: docker-compose
+  directory: /
+  schedule:
+    interval: weekly
+  open-pull-requests-limit: 5
+  groups:
+    patch-and-minor:
+      patterns:
+      - '*'
+      update-types:
+      - patch
+      - minor
